@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ちろちゃん Birthday Memorial Trip in 四国＆小豆島</title>
+  <style>
+    :root {
+      --primary-color: #e07a5f;
+      --secondary-color: #3d405b;
+      --accent-color: #f2cc8f;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #2b2d42;
+      --light-text: #6c757d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", MeiRyo, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+
+    /* ヒーローヘッダー */
+    .hero {
+      background: linear-gradient(135deg, #e07a5f 0%, #f4a261 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* リンクボタン */
+    .link-box {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .btn-link {
+      display: inline-block;
+      width: 100%;
+      background-color: var(--card-bg);
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+
+    .btn-link:active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* デイセクション */
+    .day-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .day-number {
+      background-color: var(--secondary-color);
+      color: white;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-right: 12px;
+    }
+
+    .day-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+
+    .birthday-card {
+      border: 2px solid var(--primary-color);
+      background: #fffcf9;
+    }
+
+    .birthday-card .day-number {
+      background-color: var(--primary-color);
+    }
+
+    /* タイムライン */
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px dashed #e0e0e0;
+      margin-left: 8px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 2px solid white;
+    }
+
+    .time {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .event-title {
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 2px 0;
+    }
+
+    .event-desc {
+      font-size: 0.88rem;
+      color: var(--light-text);
+      margin-top: 4px;
+    }
+
+    /* スポット画像（見切れ防止修正箇所） */
+    .spot-img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: block;
+    }
+
+    /* バースデーハイライト */
+    .birthday-highlight {
+      background-color: #ffe8e1;
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 8px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .birthday-highlight strong {
+      color: var(--primary-color);
+    }
+
+    /* フリーメモ欄 */
+    .memo-box {
+      background: #f1f3f5;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 24px;
+    }
+
+    .memo-box h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: var(--secondary-color);
+    }
+
+    .memo-box p {
+      font-size: 0.85rem;
+      color: var(--light-text);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヒーローエリア -->
+  <div class="hero">
+    <span class="hero-badge">2026.10.31 - 11.02</span>
+    <h1>ちろちゃん Birthday Memorial<br>四国＆小豆島旅行 旅のしおり</h1>
+    <p>11月1日はちろちゃんのお誕生日！素敵な3日間にしようね</p>
+  </div>
+
+  <div class="container">
+
+    <!-- うどんガイドリンク -->
+    <div class="link-box">
+      <a href="https://www.nta.co.jp/media/tripa/articles/VSlS3" target="_blank" rel="noopener noreferrer" class="btn-link">
+        🍜 高松おすすめうどんガイドを見る
+      </a>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-number">Day 1</span>
+        <span class="day-title">10月31日(土) 岡山・高松＆アンパンマントロッコ</span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="time">05:00</span>
+          <div class="event-title">自宅 出発</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">07:25 ➔ 08:45</span>
+          <div class="event-title">羽田空港 ✈ 岡山桃太郎空港（ANA）</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">09:15 ➔ 10:00</span>
+          <div class="event-title">リムジンバスで岡山駅へ</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">10:00 ➔ 15:00</span>
+          <div class="event-title">岡山駅周辺 散策＆ランチ</div>
+          <div class="event-desc">昼食：「雅芳」で岡山名物デミカツ丼＆岡山城散策</div>
+          <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/y/yamagenn224/20260321/20260321200714.jpg" class="spot-img" alt="デミカツ丼">
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">15:21 ➔ 17:02</span>
+          <div class="event-title">アンパンマントロッコ 3号</div>
+          <div class="event-desc">瀬戸大橋からの絶景を満喫しながら高松へ！</div>
+          <img src="https://www.toretabi.jp/media/007/202109/c1c38a90335c996781ebcdb06cace31d.jpg" class="spot-img" alt="アンパンマントロッコ">
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">17:30</span>
+          <div class="event-title">レンタカー手続き（高松駅）</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">18:00頃</span>
+          <div class="event-title">ホテルチェックイン</div>
+          <div class="event-desc">JRクレメントイン高松兵庫町</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">18:30〜</span>
+          <div class="event-title">夕食：香川本場の夜うどん</div>
+          <div class="event-desc">現地で夜営業をやっているお店を探して食べにいこう！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 (Birthday) -->
+    <div class="day-card birthday-card">
+      <div class="day-header">
+        <span class="day-number">Day 2</span>
+        <span class="day-title">11月1日(日) ★Happy Birthday★ 小豆島渡航</span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="time">08:00 ➔ 10:30</span>
+          <div class="event-title">モーニングうどん巡り</div>
+          <div class="event-desc">朝のうどんゴールデンタイム！お店は2人で一緒に決めよう。</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">11:35 ➔ 12:35</span>
+          <div class="event-title">高松港 🚢 小豆島・土庄港（フェリー）</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">13:00 ➔ 16:30</span>
+          <div class="event-title">小豆島ドライブ＆観光</div>
+          <div class="event-desc">寒霞渓ロープウェイ、名物そうめん、エンジェルロード散策</div>
+          <img src="https://shodoshima24.net/wp-content/uploads/2025/09/angel002.gif" class="spot-img" alt="エンジェルロード">
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">17:00</span>
+          <div class="event-title">ホテルチェックイン【edit x seven 瀬戸内小豆島】</div>
+          <img src="https://images.trvl-media.com/lodging/120000000/119670000/119664800/119664798/d7f4afad.jpg?impolicy=resizecrop&rw=1200&ra=fit" class="spot-img" alt="edit x seven 瀬戸内小豆島">
+          <div class="birthday-highlight">
+            <strong>🎉 BIRTHDAY NIGHT</strong><br>
+            ホテル共用のオーシャンビュー・インフィニティプール＆スパを満喫！今年最後のプールを楽しもう。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-number">Day 3</span>
+        <span class="day-title">11月2日(月) 小豆島満喫＆帰路へ</span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="time">09:00 ➔ 14:00</span>
+          <div class="event-title">小豆島ゆったり散策・お土産選び</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">14:45 ➔ 15:45</span>
+          <div class="event-title">土庄港 🚢 高松港（フェリー）</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">16:00 ➔ 17:00</span>
+          <div class="event-title">高松空港へ移動・レンタカー返却</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="time">19:35 ➔ 20:50</span>
+          <div class="event-title">高松空港 ✈ 羽田空港（ANA）</div>
+          <div class="event-desc">おつかれさまでした！気をつけて帰ろうね。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- メモエリア -->
+    <div class="memo-box">
+      <h3>📝 行きたい朝うどん店メモ</h3>
+      <p>・手打十段 うどんバカ一代（7:00〜）<br>・うどん さか枝（7:00〜）<br>・竹清（10:50〜）など</p>
+    </div>
+
+    <footer>
+      <p>© 2026 Happy Birthday Travel Schedule</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
